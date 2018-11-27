@@ -13,7 +13,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.sms.R;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobInstallationManager;
 import cn.bmob.v3.BmobSMS;
+import cn.bmob.v3.InstallationListener;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.UpdateListener;
@@ -39,6 +43,14 @@ public class NormalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_normal);
         ButterKnife.bind(this);
 
+        Bmob.resetDomain("http://open-vip.bmob.cn/8/");
+
+        BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
+            @Override
+            public void done(BmobInstallation bmobInstallation, BmobException e) {
+
+            }
+        });
     }
 
     @OnClick({R.id.btn_send, R.id.btn_verify})

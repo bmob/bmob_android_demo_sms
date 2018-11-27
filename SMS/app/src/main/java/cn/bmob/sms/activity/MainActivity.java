@@ -3,16 +3,27 @@ package cn.bmob.sms.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.sms.CollectionList;
+import cn.bmob.sms.DayBillBean;
 import cn.bmob.sms.R;
 import cn.bmob.sms.activity.user.UserLoginPasswordActivity;
 import cn.bmob.sms.activity.user.UserLoginSmsActivity;
 import cn.bmob.sms.activity.user.UserSignUpOrLoginSmsActivity;
 import cn.bmob.sms.activity.user.UserSignUpPasswordActivity;
 import cn.bmob.sms.activity.user.UserSignUpPasswordAndSmsActivity;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * @author zhangchaozhou
@@ -51,9 +62,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btn_normal, R.id.btn_user_signup_password, R.id.btn_signup_or_login_sms, R.id.btn_user_signup_password_and_sms, R.id.btn_user_login_password, R.id.btn_user_login_sms})
+    @OnClick({R.id.btn_test, R.id.btn_normal, R.id.btn_user_signup_password, R.id.btn_signup_or_login_sms, R.id.btn_user_signup_password_and_sms, R.id.btn_user_login_password, R.id.btn_user_login_sms})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.btn_test:
+//                DayBillBean dayBillBean = new DayBillBean();
+//
+//                dayBillBean.removeAll("listData", Arrays.asList(new DayBillBean.BillBean(
+//                        "支出", "600.00", "2018-11-02", "知识付费", "现金", "", "自己", "357d922f0b")));
+//                dayBillBean.update("357d922f0b", new UpdateListener() {
+//                    @Override
+//                    public void done(BmobException e) {
+//
+//                        if (e==null){
+//                            Log.e("done","SUCCESS");
+//                            Toast.makeText(MainActivity.this, "SUCCESS", Toast.LENGTH_SHORT).show();
+//                        }else {
+//
+//                            Log.e("done",e.getMessage());
+//                        }
+//                    }
+//                });
+
+                BmobQuery<CollectionList> bmobQuery = new BmobQuery<>();
+                bmobQuery.findObjects(new FindListener<CollectionList>() {
+                    @Override
+                    public void done(List<CollectionList> list, BmobException e) {
+                        if (e==null){
+                            Log.e("done",list==null?"null":list.size()+"");
+                        }else {
+                            Log.e("error",e.getMessage());
+                        }
+                    }
+                });
+                break;
             case R.id.btn_normal:
                 startActivity(new Intent(this, NormalActivity.class));
                 break;

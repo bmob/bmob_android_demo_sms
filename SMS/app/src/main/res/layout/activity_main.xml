@@ -53,7 +53,12 @@
         android:layout_margin="8dp"
         android:text="验证手机号码注册或登录"/>
 
-
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="测试"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
