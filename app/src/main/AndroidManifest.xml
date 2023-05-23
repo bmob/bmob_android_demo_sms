@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--允许联网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--获取sd卡写的权限，用于文件上传和下载-->
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <!--允许读取手机状态 用于创建BmobInstallation-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Bmobandroiddemosms"
+        tools:targetApi="31"
+        android:name=".App">
+
+        <activity android:name=".activity.MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.user.UserSignUpOrLoginSmsActivity"/>
+        <activity android:name=".activity.NormalActivity"/>
+        <activity android:name=".activity.user.UserSignUpPasswordAndSmsActivity"/>
+        <activity android:name=".activity.user.UserMainActivity"/>
+        <activity android:name=".activity.user.UserLoginPasswordActivity"/>
+        <activity android:name=".activity.user.UserResetSmsActivity"/>
+        <activity android:name=".activity.user.UserUnBindActivity"/>
+        <activity android:name=".activity.user.UserLoginSmsActivity"/>
+        <activity android:name=".activity.user.UserSignUpPasswordActivity"/>
+        <activity android:name=".activity.user.UserResetPasswordActivity"/>
+        <activity android:name=".activity.user.UserBindActivity"/>
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="cn.bmob.sms.BmobContentProvider">
+        </provider>
+    </application>
+
+</manifest>
