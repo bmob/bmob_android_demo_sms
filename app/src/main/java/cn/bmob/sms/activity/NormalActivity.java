@@ -37,8 +37,6 @@ public class NormalActivity extends AppCompatActivity {
         mEdtCode = findViewById(R.id.edt_code);
         mTvInfo = findViewById(R.id.tv_info);
 
-        Bmob.resetDomain("http://open-vip.bmob.cn/8/");
-
         BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
             @Override
             public void done(BmobInstallation bmobInstallation, BmobException e) {
